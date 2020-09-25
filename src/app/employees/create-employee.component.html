@@ -7,17 +7,34 @@
 
       <div class="form-group">
         <label for="fullName">Full Name</label>
-        <input id="fullName" type="text" class="form-control" name="fullName" ngModel>
+        <input id="fullName" type="text" class="form-control" name="fullName" ngModel #fullName="ngModel" required>
       </div>
+      <span *ngIf="!fullName.valid && fullName.touched">Please Enter Your Name</span>
 
+      <!-- <div>touched: {{fullName.touched}}</div>
+      <div>untouched: {{fullName.untouched}}</div>
+      <div>pristine:{{fullName.pristine}}</div>
+      <div>dirty:{{fullName.dirty}}</div> -->
       <div class="form-group">
         <label for="email">Email</label>
-        <input id="email" type="text" class="form-control" name="email" ngModel>
+        <input id="email" type="text" class="form-control" name="email" ngModel #email="ngModel" required>
       </div>
 
       <div class="form-group">
         <label for="phoneNumber">Phone Number</label>
-        <input id="phoneNumber" type="text" class="form-control" name="phoneNumber" ngModel>
+        <input id="phoneNumber" type="text" class="form-control" name="phoneNumber" ngModel #phoneNumber="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="photoPath">Photo Path</label>
+        <input id="photoPath" type="text" class="form-control" name="photoPath" [(ngModel)]="photoPath">
+      </div>
+      <div class="form-group">
+        <img [src]="photoPath" height="200" width="200" *ngIf="previewPhoto" />
+      </div>
+      <div class="form-group">
+        <button (click)="togglePhotoPreview()" class="btn btn-primary">
+          {{previewPhoto ? "Hide " : "Show " }} Preview
+        </button>
       </div>
 
       <div class="form-group">
@@ -62,10 +79,18 @@
           </option>
         </select>
       </div>
+      <div class="row">
+        <div class="form-group col-md-4">
+          <label for="dateOfBirth">Date of Birth</label>
+          <input id="dateOfBirth" name="dateOfBirth" ngModel type="text" bsDatepicker [bsConfig]="datePickerConfig"
+            class="form-control" />
+        </div>
+      </div>
+
     </div>
 
     <div class="panel-footer">
-      <button class="btn btn-primary" type="submit">Save</button>
+      <button class="btn btn-primary" type="submit" [disabled]="!employeeForm.valid">Save</button>
     </div>
   </div>
 </form>
