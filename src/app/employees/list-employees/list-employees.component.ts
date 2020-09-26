@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Employee } from './../../models/employee.model';
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
@@ -9,9 +10,15 @@ import { EmployeeService } from '../employee.service';
 })
 export class ListEmployeesComponent implements OnInit {
   employees: Employee[];
-  constructor(private employeeService: EmployeeService) {}
+  constructor(
+    private employeeService: EmployeeService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.employees = this.employeeService.getEmployees();
+  }
+  onClick(employeeId: number): void {
+    this.router.navigate(['/employees', employeeId]);
   }
 }

@@ -13,6 +13,7 @@ import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator
 import { EmployeeService } from './employees/employee.service';
 import { DisplayEmployeeComponent } from './employees/display-employee.component';
 import { CreateEmployeeCanDeactivateGuardService } from './employees/create-employee-can-deactivate-gaurd.service';
+import { EmployeeDetailsComponent } from './employees/employee-details.component';
 
 const appRoutes: Routes = [
   { path: 'list', component: ListEmployeesComponent },
@@ -20,6 +21,10 @@ const appRoutes: Routes = [
     path: 'create',
     component: CreateEmployeeComponent,
     canDeactivate: [CreateEmployeeCanDeactivateGuardService],
+  },
+  {
+    path: 'employees/:id',
+    component: EmployeeDetailsComponent,
   },
   { path: '', redirectTo: '/list', pathMatch: 'full' },
 ];
@@ -32,6 +37,7 @@ const appRoutes: Routes = [
     CreateEmployeeComponent,
     ConfirmEqualValidatorDirective,
     DisplayEmployeeComponent,
+    EmployeeDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Employee } from '../models/employee.model';
 @Component({
   selector: 'app-display-employee',
@@ -13,11 +14,13 @@ import { Employee } from '../models/employee.model';
 })
 export class DisplayEmployeeComponent implements OnInit {
   @Input() employee: Employee;
+  selectedEmployeeId: number;
 
-  constructor() {}
+  constructor(private route: ActivatedRoute) {}
 
-  ngOnInit(): void {}
-
+  ngOnInit(): void {
+    this.selectedEmployeeId = +this.route.snapshot.paramMap.get('id');
+  }
   // This life cycle hook receives SimpleChanges as an Input parameter
   // We can use it to retrieve previous and current values as shown below
   // ngOnChanges(changes: SimpleChanges): void {
