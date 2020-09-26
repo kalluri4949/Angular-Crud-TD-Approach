@@ -1,4 +1,4 @@
-<form #employeeForm="ngForm" (ngSubmit)="saveEmployee(employee)">
+<form #employeeForm="ngForm" (ngSubmit)="saveEmployee()">
   <div class="panel panel-primary">
     <div class="panel-heading">
       <h3 class="panel-title">Create Employee</h3>
@@ -103,7 +103,7 @@
         <img [src]="photoPath" height="200" width="200" *ngIf="previewPhoto" />
       </div>
       <div class="form-group">
-        <button (click)="togglePhotoPreview()" class="btn btn-primary">
+        <button (click)="togglePhotoPreview()" type="text" class="btn btn-primary">
           {{previewPhoto ? "Hide " : "Show " }} Preview
         </button>
       </div>
