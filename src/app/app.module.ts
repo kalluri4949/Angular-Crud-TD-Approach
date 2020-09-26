@@ -10,6 +10,7 @@ import { ListEmployeesComponent } from './employees/list-employees/list-employee
 import { CreateEmployeeComponent } from './employees/create-employee.component';
 import { SelectRequiredValidatorDirective } from './shared/select-required-validator.directive';
 import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator.directive';
+import { EmployeeFilterPipe } from './employees/employee-filter-pipe';
 import { EmployeeService } from './employees/employee.service';
 import { DisplayEmployeeComponent } from './employees/display-employee.component';
 import { CreateEmployeeCanDeactivateGuardService } from './employees/create-employee-can-deactivate-gaurd.service';
@@ -38,6 +39,7 @@ const appRoutes: Routes = [
     ConfirmEqualValidatorDirective,
     DisplayEmployeeComponent,
     EmployeeDetailsComponent,
+    EmployeeFilterPipe,
   ],
   imports: [
     BrowserModule,

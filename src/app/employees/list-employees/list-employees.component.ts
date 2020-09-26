@@ -9,6 +9,7 @@ import { EmployeeService } from '../employee.service';
   styleUrls: ['./list-employees.component.css'],
 })
 export class ListEmployeesComponent implements OnInit {
+  searchTerm: string;
   employees: Employee[];
   constructor(
     private employeeService: EmployeeService,

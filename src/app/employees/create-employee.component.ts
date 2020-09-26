@@ -52,7 +52,9 @@ export class CreateEmployeeComponent implements OnInit {
 
   ngOnInit(): void {}
   saveEmployee(): void {
-    this.employeeService.save(this.employee);
+    const newEmployee: Employee = Object.assign({}, this.employee);
+    this.employeeService.save(newEmployee);
+    this.createEmployeeForm.reset();
     this.router.navigate(['list']);
   }
   togglePhotoPreview(): void {
