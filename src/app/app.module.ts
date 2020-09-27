@@ -18,6 +18,7 @@ import { EmployeeDetailsGuardService } from './employees/employee-details-guard.
 import { EmployeeDetailsComponent } from './employees/employee-details.component';
 import { EmployeeListResolverService } from './employees/employee-list-resolver.service';
 import { PageNotFoundComponent } from './page-not-found.component';
+import { AccordionComponent } from './shared/accordion.component';
 
 const appRoutes: Routes = [
   {
@@ -50,6 +51,7 @@ const appRoutes: Routes = [
     EmployeeDetailsComponent,
     EmployeeFilterPipe,
     PageNotFoundComponent,
+    AccordionComponent,
   ],
   imports: [
     BrowserModule,
