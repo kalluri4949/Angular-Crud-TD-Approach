@@ -33,16 +33,17 @@ export class ListEmployeesComponent implements OnInit {
     private employeeService: EmployeeService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    this.employees = this.route.snapshot.data.employeeList;
 
-  ngOnInit(): void {
-    this.employees = this.employeeService.getEmployees();
     if (this.route.snapshot.queryParamMap.has('searchTerm')) {
       this.searchTerm = this.route.snapshot.queryParamMap.get('searchTerm');
     } else {
       this.filteredEmployees = this.employees;
     }
   }
+
+  ngOnInit(): void {}
   onClick(employeeId: number): void {
     this.router.navigate(['employees', employeeId], {
       queryParams: { searchTerm: this.searchTerm, testParam: 'testValue' },
