@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Employee } from './../../models/employee.model';
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
@@ -31,13 +31,21 @@ export class ListEmployeesComponent implements OnInit {
   }
   constructor(
     private employeeService: EmployeeService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.employees = this.employeeService.getEmployees();
+    if (this.route.snapshot.queryParamMap.has('searchTerm')) {
+      this.searchTerm = this.route.snapshot.queryParamMap.get('searchTerm');
+    } else {
+      this.filteredEmployees = this.employees;
+    }
   }
   onClick(employeeId: number): void {
-    this.router.navigate(['/employees', employeeId]);
+    this.router.navigate(['employees', employeeId], {
+      queryParams: { searchTerm: this.searchTerm, testParam: 'testValue' },
+    });
   }
 }
