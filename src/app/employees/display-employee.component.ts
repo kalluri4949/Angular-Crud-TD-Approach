@@ -27,4 +27,7 @@ export class DisplayEmployeeComponent implements OnInit {
       queryParams: { searchTerm: this.searchTerm },
     });
   }
+  editEmployee(): void {
+    this.router.navigate(['/edit', this.employee.id]);
+  }
 }
