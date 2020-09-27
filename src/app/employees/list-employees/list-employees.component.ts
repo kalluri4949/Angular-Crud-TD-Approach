@@ -34,12 +34,19 @@ export class ListEmployeesComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
+    // retrieving from resolver
     this.employees = this.route.snapshot.data.employeeList;
 
     if (this.route.snapshot.queryParamMap.has('searchTerm')) {
       this.searchTerm = this.route.snapshot.queryParamMap.get('searchTerm');
     } else {
       this.filteredEmployees = this.employees;
+    }
+  }
+  onDeleteNotification(id: number): void {
+    const i = this.filteredEmployees.findIndex((e) => e.id === id);
+    if (i !== -1) {
+      this.filteredEmployees.splice(i, 1);
     }
   }
 
